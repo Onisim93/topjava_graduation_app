@@ -1,8 +1,39 @@
 package ru.topjava.graduation_app.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.validator.constraints.Range;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
-public class Meal extends AbstractBaseEntity{
+@Table(name = "meals")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Meal extends AbstractNamedEntity {
+    @Range(min = 1, max = 5000)
+    @Column(name = "price", nullable = false)
+    private Integer price;
+
+    @Column(name = "local_date", nullable = false)
+    private LocalDate localDate = LocalDate.now();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference(value = "meal")
+    private Restaurant restaurant;
+
+    @Override
+    public String toString() {
+        return "Meal{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", id=" + id +
+                '}';
+    }
 }
