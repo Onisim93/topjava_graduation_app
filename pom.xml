@@ -11,7 +11,7 @@
     <groupId>ru.topjava</groupId>
     <artifactId>graduation_app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>graduation_app</name>
     <description>graduation_app</description>
     <properties>
