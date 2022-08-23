@@ -1,37 +1,33 @@
 package ru.topjava.graduation_app.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 
 @Entity
-@Table(name = "votes")
+@Table(name = "votes", uniqueConstraints = {
+        @UniqueConstraint(name = "votes_unique_user_id_local_date_idx", columnNames = {"user_id", "local_date"})
+})
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
+@ToString(callSuper = true, exclude = {"user", "restaurant"})
 public class Vote extends AbstractBaseEntity{
 
-    private Integer userId;
-    private Integer restaurantId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id")
+    @JsonIgnore
+    private Restaurant restaurant;
+
+    @Column(name = "local_date", nullable = false)
     private LocalDate localDate = LocalDate.now();
-
-    public Vote (int userId, int restaurantId) {
-        this.userId = userId;
-        this.restaurantId = restaurantId;
-    }
-
-    @Override
-    public String toString() {
-        return "Vote{" +
-                "userId=" + userId +
-                ", restaurantId=" + restaurantId +
-                ", localDate=" + localDate +
-                '}';
-    }
 }

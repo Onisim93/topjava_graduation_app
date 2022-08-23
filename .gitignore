@@ -15,6 +15,10 @@ target/
 
 ### IntelliJ IDEA ###
 .idea
+out
+target
+logs
+*.patch
 *.iws
 *.iml
 *.ipr

@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    username: su
+    password:
+    url: jdbc:h2:mem:mydb
+      #    tcp: jdbc:h2:tcp://localhost:9092/mem:voting
+      # Absolute path
+      #        url: jdbc:h2:C:/projects/bootjava/restorant-voting/db/voting
+      #    tcp: jdbc:h2:tcp://localhost:9092/C:/projects/bootjava/restorant-voting/db/voting
+      # Relative path form current dir
+      #    url: jdbc:h2:./db/voting
+      # Relative path from home
+    #    url: jdbc:h2:~/voting
+    #    tcp: jdbc:h2:tcp://localhost:9092/~/voting
+  sql:
+    init:
+      encoding: UTF-8
+  jpa:
+    properties:
+      hibernate:
+        use_sql_comments: true
+        format_sql: true
+        cache:
+          use_second_level_cache: true
+        region:
+          factory_class: org.hibernate.cache.jcache.internal.JCacheRegionFactory
+        hbm2ddl:
+          auto: create-drop
+    defer-datasource-initialization: true
+    open-in-view: false
+  cache:
+    jcache:
+      provider: org.ehcache.jsr107.EhcacheCachingProvider
+      config: cache/ehcache.xml
+  h2:
+    console:
+      enabled: true

@@ -17,7 +17,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(name = "users_unique_email_idx", columnNames = "email"))
 @Getter
 @Setter
 public class User extends AbstractNamedEntity{
@@ -25,17 +25,20 @@ public class User extends AbstractNamedEntity{
     @Email
     @NotBlank
     @Size(max = 128)
+    @Column(name = "email", nullable = false)
     private String email;
 
     @NotBlank
     @Size(min = 5, max = 128)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Column(name = "password", nullable = false)
     private String password;
 
     @NotNull
     @Column(name = "registered", updatable = false)
     private LocalDateTime registered = LocalDateTime.now();
 
+    @Column(name = "enabled", nullable = false)
     private boolean enabled = true;
 
     @Enumerated(EnumType.STRING)

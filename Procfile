@@ -1,0 +1,1 @@
+web: java -jar target/graduation_app-0.0.1-SNAPSHOT.war
