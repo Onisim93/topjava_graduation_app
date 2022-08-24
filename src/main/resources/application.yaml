@@ -1,8 +1,8 @@
 spring:
   datasource:
-    username: kfkaydxjdhpcpy
-    password: 919985f7cc3d7c1f5de70fcc26c03d248782183fa48e29089c798bb40243af4c
-    url: jdbc:postgresql://ec2-52-49-120-150.eu-west-1.compute.amazonaws.com/d37oft0l7mrlbi
+    username: ziykrtutdxhfiz
+    password: e172d0f9791ae3b0710b7899673bdfcffd04fa276b276d3e4bc3cdec50ce6320
+    url: jdbc:postgresql://ec2-54-227-248-71.compute-1.amazonaws.com/d1c99rpckpqg2c
   sql:
     init:
       encoding: UTF-8

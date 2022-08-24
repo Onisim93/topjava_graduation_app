@@ -18,6 +18,7 @@ target/
 out
 target
 logs
+*.log
 *.patch
 *.iws
 *.iml
