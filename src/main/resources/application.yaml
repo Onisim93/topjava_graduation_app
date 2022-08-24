@@ -1,17 +1,8 @@
 spring:
   datasource:
-    username: su
-    password:
-    url: jdbc:h2:mem:mydb
-      #    tcp: jdbc:h2:tcp://localhost:9092/mem:voting
-      # Absolute path
-      #        url: jdbc:h2:C:/projects/bootjava/restorant-voting/db/voting
-      #    tcp: jdbc:h2:tcp://localhost:9092/C:/projects/bootjava/restorant-voting/db/voting
-      # Relative path form current dir
-      #    url: jdbc:h2:./db/voting
-      # Relative path from home
-    #    url: jdbc:h2:~/voting
-    #    tcp: jdbc:h2:tcp://localhost:9092/~/voting
+    username: kfkaydxjdhpcpy
+    password: 919985f7cc3d7c1f5de70fcc26c03d248782183fa48e29089c798bb40243af4c
+    url: jdbc:postgresql://ec2-52-49-120-150.eu-west-1.compute.amazonaws.com/d37oft0l7mrlbi
   sql:
     init:
       encoding: UTF-8
@@ -25,8 +16,8 @@ spring:
         region:
           factory_class: org.hibernate.cache.jcache.internal.JCacheRegionFactory
         hbm2ddl:
-          auto: create-drop
-        dialect: H2Dialect
+          auto: update
+        dialect: org.hibernate.dialect.PostgreSQLDialect
     defer-datasource-initialization: true
     open-in-view: false
   cache:
